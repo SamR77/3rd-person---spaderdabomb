@@ -1,0 +1,21 @@
+Based off Tutorial Series by [spaderdabomb] https://www.youtube.com/playlist?list=PLYvjPIZvaz-o-DIBhiHzSrrau9HKSmeEz
+
+Character: HumanMale_Character [Blink - FREE Low Poly Human - RPG Character] https://assetstore.unity.com/packages/3d/characters/humanoids/fantasy/free-low-poly-human-rpg-character-219979 
+
+Animations:
+- Idle					[Blink - FREE Low Poly Human - RPG Character] https://assetstore.unity.com/packages/3d/characters/humanoids/fantasy/free-low-poly-human-rpg-character-219979
+- RunBackward			[Blink - FREE Low Poly Human - RPG Character] https://assetstore.unity.com/packages/3d/characters/humanoids/fantasy/free-low-poly-human-rpg-character-219979
+- RunBackwardLeft		[Blink - FREE Low Poly Human - RPG Character] https://assetstore.unity.com/packages/3d/characters/humanoids/fantasy/free-low-poly-human-rpg-character-219979
+- RunBackwardRight		[Blink - FREE Low Poly Human - RPG Character] https://assetstore.unity.com/packages/3d/characters/humanoids/fantasy/free-low-poly-human-rpg-character-219979
+- RunForward			[Blink - FREE Low Poly Human - RPG Character] https://assetstore.unity.com/packages/3d/characters/humanoids/fantasy/free-low-poly-human-rpg-character-219979
+- RunLeft				[Blink - FREE Low Poly Human - RPG Character] https://assetstore.unity.com/packages/3d/characters/humanoids/fantasy/free-low-poly-human-rpg-character-219979
+- RunRight				[Blink - FREE Low Poly Human - RPG Character] https://assetstore.unity.com/packages/3d/characters/humanoids/fantasy/free-low-poly-human-rpg-character-219979
+- StrafeLeft			[Blink - FREE Low Poly Human - RPG Character] https://assetstore.unity.com/packages/3d/characters/humanoids/fantasy/free-low-poly-human-rpg-character-219979
+- StrafeRight			[Blink - FREE Low Poly Human - RPG Character] https://assetstore.unity.com/packages/3d/characters/humanoids/fantasy/free-low-poly-human-rpg-character-219979
+
+- Sprint				Mixamo.com https://www.Mixamo.com
+- SprintLeft			Mixamo.com https://www.Mixamo.com
+- Walk					Mixamo.com https://www.Mixamo.com
+- WalkRight				Mixamo.com https://www.Mixamo.com
+
+

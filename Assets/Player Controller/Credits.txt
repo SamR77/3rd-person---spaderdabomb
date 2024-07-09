@@ -1,0 +1,5 @@
+Based off Tutorial Series by: spaderdabomb - https://www.youtube.com/playlist?list=PLYvjPIZvaz-o-DIBhiHzSrrau9HKSmeEz
+
+
+Character Meshes & Animations from: Blink : FREE Low Poly Human - RPG Character
+Unity Asset Store: https://assetstore.unity.com/packages/3d/characters/humanoids/fantasy/free-low-poly-human-rpg-character-219979
