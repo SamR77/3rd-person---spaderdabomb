@@ -12,11 +12,15 @@ namespace SamR
         #region Class Variables
         [SerializeField] private bool holdToSprint = false;
 
-       public bool SprintToggledOn              { get; private set; }
-       public PlayerControls PlayerControls     { get; private set; }
-       public Vector2 MovementInput             { get; private set; }
-       public Vector2 LookInput                 { get; private set; }
-       public bool JumpPressed                  { get; private set; }
+        public PlayerControls PlayerControls    { get; private set; }
+        public Vector2 MovementInput            { get; private set; }
+        public Vector2 LookInput                { get; private set; }
+        public bool JumpPressed                 { get; private set; }
+        public bool SprintToggledOn             { get; private set; }
+        public bool WalkToggledOn               { get; private set; }
+       
+       
+       
         #endregion
 
         #region Startup
@@ -47,7 +51,7 @@ namespace SamR
         public void OnMovement(InputAction.CallbackContext context)
         {
             MovementInput = context.ReadValue<Vector2>();
-            print(MovementInput);
+            
         }
 
         public void OnLook(InputAction.CallbackContext context)
@@ -76,6 +80,17 @@ namespace SamR
 
             JumpPressed = true;
 
+        }
+
+        public void OnToggleWalk(InputAction.CallbackContext context)
+        {
+            if (context.performed == false)
+            {
+                return;
+            }
+
+            // Switches flag for WalkToggledOn
+            WalkToggledOn = !WalkToggledOn;
         }
         #endregion
     }

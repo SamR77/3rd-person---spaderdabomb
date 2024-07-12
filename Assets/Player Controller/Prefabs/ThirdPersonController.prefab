@@ -1730,7 +1730,14 @@ MonoBehaviour:
   playerCamera: {fileID: 1459054389242647564}
   runAcceleration: 50
   runSpeed: 4
+  sprintAcceleration: 0.5
+  sprintSpeed: 7
   drag: 30
+  gravity: 25
+  jumpSpeed: 1
+  movingThreshold: 0.01
+  playerModelRotationSpeed: 10
+  rotateToTargetTime: 0.25
   lookSenseH: 0.1
   lookSenseV: 0.1
   lookLimitV: 60
@@ -1747,6 +1754,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01cce4f620ed93f48be4d5c7e629d7d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  holdToSprint: 0
 --- !u!1 &2619804754714332197
 GameObject:
   m_ObjectHideFlags: 0
@@ -2446,7 +2454,7 @@ GameObject:
   - component: {fileID: 1758951166633296759}
   - component: {fileID: 4275716367929105466}
   m_Layer: 0
-  m_Name: MainCamera (1)
+  m_Name: MainCamera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2460,8 +2468,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4133097084381931165}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.09853763, y: 0, z: 0, w: 0.99513334}
-  m_LocalPosition: {x: 0, y: 0.4000001, z: -2}
+  m_LocalRotation: {x: 0.09853762, y: -0, z: -0, w: 0.99513334}
+  m_LocalPosition: {x: 0, y: -1.35, z: -2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3125,7 +3133,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2470676823977619997
 Transform:
   m_ObjectHideFlags: 0
@@ -3925,8 +3933,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6261128305536269013}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.09853763, y: 0, z: 0, w: 0.99513334}
-  m_LocalPosition: {x: 0, y: 0.4000001, z: -2}
+  m_LocalRotation: {x: 0.09853762, y: -0, z: -0, w: 0.99513334}
+  m_LocalPosition: {x: 0, y: -1.35, z: -2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3951,8 +3959,8 @@ MonoBehaviour:
   m_StreamingVersion: 20170927
   m_Priority: 10
   m_StandbyUpdate: 2
-  m_LookAt: {fileID: 2470676823977619997}
-  m_Follow: {fileID: 2470676823977619997}
+  m_LookAt: {fileID: 0}
+  m_Follow: {fileID: 0}
   m_Lens:
     FieldOfView: 60.000004
     OrthographicSize: 5
