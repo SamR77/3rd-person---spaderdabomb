@@ -1,6 +1,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using UnityEditor.PackageManager;
+using UnityEditor.Timeline.Actions;
 using UnityEngine;
 
 
@@ -14,7 +17,10 @@ namespace SamR
         private PlayerLocomotionInput playerLocomotionInput;
         private PlayerState playerState;
         private PlayerController playerController;
+        private PlayerActionsInput playerActionsInput;
 
+
+        // Locomotion
         private static int inputXHash = Animator.StringToHash("inputX");
         private static int inputYHash = Animator.StringToHash("inputY");
         private static int inputMagnitudeHash = Animator.StringToHash("inputMagnitude");
@@ -22,22 +28,38 @@ namespace SamR
         private static int isGroundedHash = Animator.StringToHash("isGrounded");
         private static int isFallingHash = Animator.StringToHash("isFalling");
         private static int isJumpingHash = Animator.StringToHash("isJumping");
+
+        
+        // Actions
+        private static int isAttackingHash = Animator.StringToHash("isAttacking");
+        private static int isGatheringHash = Animator.StringToHash("isGathering");
+        private static int isPlayingActionHash = Animator.StringToHash("isPlayingAction");
+        private int[] actionHashes;
+
+        // Camera/Rotation
         private static int isRotatingToTargetHash = Animator.StringToHash("isRotatingToTarget");
         private static int rotationMismatchHash = Animator.StringToHash("rotationMismatch");
 
         private Vector3 currentBlendInput = Vector3.zero;
+
+        private float sprintMaxBlendValue = 1.5f;
+        private float runMaxBlendValue = 1.0f;
+        private float walkMaxBlendValue = 0.5f;
 
         private void Awake()
         {
             playerLocomotionInput = GetComponent<PlayerLocomotionInput>();
             playerState = GetComponent<PlayerState>();
             playerController = GetComponent<PlayerController>();
+            playerActionsInput = GetComponent<PlayerActionsInput>();
+
+            actionHashes = new int[] { isAttackingHash, isGatheringHash, isPlayingActionHash };
         }
 
 
         void Update()
         {
-            UpdateAnimationState();        
+            UpdateAnimationState();
         }
 
         private void UpdateAnimationState()
@@ -48,10 +70,13 @@ namespace SamR
             bool isJumping = playerState.CurrentPlayerMovementState == PlayerMovementState.Jumping;
             bool isFalling = playerState.CurrentPlayerMovementState == PlayerMovementState.Falling;
             bool isGrounded = playerState.InGroundedState();
+            bool isPlayingAction = actionHashes.Any(hash => animator.GetBool(hash));
 
-            Vector2 inputTarget = isSprinting   ? playerLocomotionInput.MovementInput * 1.5f :
-                                  isRunning     ? playerLocomotionInput.MovementInput * 1.0f :  
-                                                  playerLocomotionInput.MovementInput * 0.5f ; // walking
+            bool isRunBlendValue = isRunning || isJumping || isFalling;
+
+            Vector2 inputTarget = isSprinting       ? playerLocomotionInput.MovementInput * sprintMaxBlendValue :
+                                  isRunBlendValue   ? playerLocomotionInput.MovementInput * runMaxBlendValue :  
+                                                      playerLocomotionInput.MovementInput * walkMaxBlendValue ; // walking
 
 
             currentBlendInput = Vector3.Lerp(currentBlendInput, inputTarget, locomotionBlendSpeed * Time.deltaTime);
@@ -61,6 +86,10 @@ namespace SamR
             animator.SetBool(isFallingHash, isFalling);
             animator.SetBool(isJumpingHash, isJumping);
             animator.SetBool(isRotatingToTargetHash, playerController.IsRotatingToTarget);
+
+            animator.SetBool(isAttackingHash, playerActionsInput.AttackPressed);
+            animator.SetBool(isGatheringHash, playerActionsInput.GatherPressed);
+            animator.SetBool(isPlayingActionHash, isPlayingAction);           
 
             animator.SetFloat(inputXHash, currentBlendInput.x);
             animator.SetFloat(inputYHash, currentBlendInput.y);

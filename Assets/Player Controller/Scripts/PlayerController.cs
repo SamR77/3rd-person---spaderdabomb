@@ -30,6 +30,7 @@ namespace SamR
         public float sprintSpeed = 7f;
         public float drag = 20f;
         public float gravity = 25f;
+        public float terminalVelocity = 50f;
         public float jumpSpeed = 1.0f;
         public float movingThreshold = 0.01f;
 
@@ -70,13 +71,12 @@ namespace SamR
         #region Startup 
         private void Awake()
         {
-            //characterController = GetComponent<CharacterController>();
             playerLocomotionInput = GetComponent<PlayerLocomotionInput>();
             playerState = GetComponent<PlayerState>();
 
             antiBump = sprintSpeed;
             stepOffset = characterController.stepOffset;
-            
+
         }
         #endregion
 
@@ -151,8 +151,12 @@ namespace SamR
                 verticalVelocity += antiBump;
             }
 
-            //Clamp terminal Velocity
-         
+            // Clamp at terminal velocity
+            if (Mathf.Abs(verticalVelocity) > Mathf.Abs(terminalVelocity))
+            {
+                verticalVelocity = -1f * Mathf.Abs(terminalVelocity);
+            }
+
 
         }
         private void HandleLateralMovement()
